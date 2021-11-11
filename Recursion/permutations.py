@@ -15,6 +15,9 @@ First brute-force solution
 """
 
 
+
+
+import functools
 def get_permutations(array):
     permutations = []
     build_permutations(array, [], permutations)
@@ -78,3 +81,35 @@ def permutations(array, current, result):
 # results = []
 # permutations([1, 2, 3], [], results)
 # print(results)
+
+
+"""
+@permutations2
+
+time complexity
+the algo perform at O(n * m!) 
+n = is our numbers array that we have to move through 
+m = are our the partial permutations we have to do with out bruteforce/backtrack method
+
+space complexity
+O(m!) 
+m = is the amount of solutions we have to keep in our stack 
+"""
+
+# enhancement with sets
+def _permutations(array, current, result):
+    print(current)
+    if len(current) == len(array):
+        result.append(list(current))
+        return
+
+    for num in array:
+        if num not in current:
+            current.add(num)
+            _permutations(array, current, result)
+            current.remove(num)
+
+res = []
+_permutations({1, 2, 3}, set(), res)
+# _permutations([1, 2, 3], [], res)
+print(res)
