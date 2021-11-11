@@ -1,5 +1,6 @@
 from typing import Counter
 
+nums = ["1", "3", "2"]
 response = []
 def backtrack(current, numbers_counter):
     if len(current) == len(nums):
